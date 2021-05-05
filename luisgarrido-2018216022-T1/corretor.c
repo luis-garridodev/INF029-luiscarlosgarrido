@@ -16,9 +16,9 @@
 
 #include <stdio.h>
 #include <string.h>
-
+#include<stdlib.h>
 //renomeie o arquivo do include abaixo para PrimeiroUltimoNomeMATRICULA.c
-#include "luisgarrido.c"
+#include "luisgarrido2018216022.h"
 
 void testSomar();    //função utilizada para testes
 void testFatorial(); //função utilizada para testes
@@ -33,18 +33,31 @@ int main()
 {
     //testSomar();
     //testFatorial();
-    testQ1();
+   // testQ1();
+  testQ3();
+    //testQ5();
     /*testQ2();
     testQ3();
     testQ4();
-    testQ5();
+    
     testQ6();*/
     //digita a data
-    char data[11];
-    
+   // char data[11];
+   // int validarData;
     //ler a data em "data"
+    //int inversao;
+   // int envianumero;
+   //  validarData=q1(data);
+    // system("pause");
+   // inversao=q5(envianumero);
+    //variaveis da questão 3
+    //char stringletra[250];
+   // char letra;
+   // int analise;
+   // int procuraletra;
+   // procuraletra=q3(stringletra,letra,analise);
     
-    //validarData(data);
+
 }
 
 
@@ -192,3 +205,5 @@ void testQ6()
     printf("%d\n", q6(3539343, 3) == 4);
     printf("%d\n", q6(3539343, 39) == 1);
 }
+
+
