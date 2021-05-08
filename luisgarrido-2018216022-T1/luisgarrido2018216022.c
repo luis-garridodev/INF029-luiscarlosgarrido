@@ -278,7 +278,7 @@ void converteTextoParaMaiuscula(char *texto)
 {
     int i;
     for (i = 0; texto[i] != '\0'; i++)
-	texto[i] = toupper(texto[i]);
+        texto[i] = toupper(texto[i]);
 }
 /*
 	Q3 = encontrar caracter em texto
@@ -294,21 +294,21 @@ int q3(char *texto, char c, int isCaseSensitive)
 {
     int qtdOcorrencias = 0;
     int i;
-	
+
     if (isCaseSensitive == 0)
     {
         converteTextoParaMaiuscula(texto);
         c = toupper(c);
-	}
-	
+    }
+
     for (i = 0; texto[i] != '\0'; i++)
     {
         if (texto[i] == c)
         {
             qtdOcorrencias++;
-		}
-	}
-	
+        }
+    }
+
     return qtdOcorrencias;
 }
 
@@ -370,8 +370,26 @@ int q5(int num ){
     Quantidade de vezes que número de busca ocorre em número base
 */
 
-int q6(int numerobase, int numerobusca)
-{
-    int qtdOcorrencias;
+int q6(int numerobase, int numerobusca){
+    int qtdOcorrencias=0, aux=numerobusca, b;
+
+    if(numerobase/10>0){
+
+    	for(b=1;aux>0;aux/=10){
+    		b*=10;
+    	}
+
+        for(b=b;numerobase>0;numerobase/=10){
+            if ((numerobase%b)==numerobusca)
+                qtdOcorrencias++;
+        }
+    }
+
+    else if (numerobase==numerobusca)
+        qtdOcorrencias=1;
+    else
+        qtdOcorrencias=0;
+
     return qtdOcorrencias;
-} 
+}
+
