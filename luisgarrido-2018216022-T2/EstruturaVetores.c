@@ -16,7 +16,7 @@ Elemento vetorPrincipal[TAM];
 
 void dobrar(int *x)
 {
-	
+
 	*x = *x * 2;
 }
 /*
@@ -32,9 +32,15 @@ void dobrar(int *x)
 */
 int criarEstruturaAuxiliar(int posicao, int tamanho)
 {
+
 	
 	int retorno = 0;
 	
+
+
+	int retorno = 0;
+
+
 	// a entrada posicao do usuário vai de 1 a 10
 	// internamente é de 0 a 9
 	// if (posicao - 1 < 0 || posicao - 1 > 9)
@@ -56,20 +62,32 @@ int criarEstruturaAuxiliar(int posicao, int tamanho)
 	}
 	else
 	{
+
 		
 		// deu tudo certo, crie
 		vetorPrincipal[posicao - 1].aux = malloc(tamanho * sizeof(int));
 		vetorPrincipal[posicao - 1].tam = tamanho;
-		
+
+
+		// deu tudo certo, crie
+		vetorPrincipal[posicao - 1].aux = malloc(tamanho * sizeof(int));
+		vetorPrincipal[posicao - 1].tam = tamanho;
+
+
 		if (!vetorPrincipal[posicao - 1].aux)
 		{
 			// o tamanho ser muito grande
 			retorno = SEM_ESPACO_DE_MEMORIA;
 		}
 		else
+
 		retorno = SUCESSO;
 	}
 	
+
+			retorno = SUCESSO;
+	}
+
 	return retorno;
 }
 
@@ -84,11 +102,17 @@ int criarEstruturaAuxiliar(int posicao, int tamanho)
 */
 int inserirNumeroEmEstrutura(int posicao, int valor)
 {
+
 	
 	int retorno = 0;
 	int existeEstruturaAuxiliar = 0;
 	int posicao_invalida = 0;
-	
+
+
+	int retorno = 0;
+	int existeEstruturaAuxiliar = 0;
+	int posicao_invalida = 0;
+
 	//if (posicao < 1 || posicao > 10)
 	if (ehPosicaoValida(posicao) == POSICAO_INVALIDA)
 	{
@@ -117,7 +141,7 @@ int inserirNumeroEmEstrutura(int posicao, int valor)
 			}
 		}
 	}
-	
+
 	return retorno;
 }
 
@@ -133,6 +157,7 @@ int inserirNumeroEmEstrutura(int posicao, int valor)
     POSICAO_INVALIDA - Posição inválida para estrutura auxiliar
 */
 int excluirNumeroDoFinaldaEstrutura(int posicao)
+
 { 
 	
 	int retorno;
@@ -158,6 +183,11 @@ int excluirNumeroDoFinaldaEstrutura(int posicao)
 	}
 	//sucesso crie	
 	return (retorno);
+
+{
+	int retorno = SUCESSO;
+	return retorno;
+
 }
 
 
@@ -176,6 +206,7 @@ int excluirNumeroDoFinaldaEstrutura(int posicao)
 */
 int excluirNumeroEspecificoDeEstrutura(int posicao, int valor)
 {
+
 	int retorno;
   	if (posicao < 1 || posicao > 10)
 	{
@@ -210,6 +241,9 @@ int excluirNumeroEspecificoDeEstrutura(int posicao, int valor)
 		
 		
 	}
+
+	int retorno = SUCESSO;
+
 	return retorno;
 }
 
@@ -221,10 +255,15 @@ int ehPosicaoValida(int posicao)
 	{
 		retorno = POSICAO_INVALIDA;
 	}
+
 	
 	else
 	retorno = SUCESSO;
 	
+
+	else
+		retorno = SUCESSO;
+
 	return retorno;
 }
 /*
@@ -238,11 +277,20 @@ int ehPosicaoValida(int posicao)
 */
 int getDadosEstruturaAuxiliar(int posicao, int vetorAux[])
 {
+
 	
 	int retorno = 0;
 	
 	return retorno;
 }
+
+
+
+	int retorno = 0;
+
+	return retorno;
+}
+
 
 /*
 	Objetivo: retorna os números ordenados da estrutura auxiliar da posição 'posicao (1..10)'.
@@ -255,9 +303,15 @@ int getDadosEstruturaAuxiliar(int posicao, int vetorAux[])
 */
 int getDadosOrdenadosEstruturaAuxiliar(int posicao, int vetorAux[])
 {
+
 	
 	int retorno = 0;
 	
+
+
+	int retorno = 0;
+
+
 	return retorno;
 }
 
@@ -272,7 +326,7 @@ int getDadosOrdenadosEstruturaAuxiliar(int posicao, int vetorAux[])
 */
 int getDadosDeTodasEstruturasAuxiliares(int vetorAux[])
 {
-	
+
 	int retorno = 0;
 	return retorno;
 }
@@ -288,7 +342,7 @@ int getDadosDeTodasEstruturasAuxiliares(int vetorAux[])
 */
 int getDadosOrdenadosDeTodasEstruturasAuxiliares(int vetorAux[])
 {
-	
+
 	int retorno = 0;
 	return retorno;
 }
@@ -306,7 +360,7 @@ int getDadosOrdenadosDeTodasEstruturasAuxiliares(int vetorAux[])
 */
 int modificarTamanhoEstruturaAuxiliar(int posicao, int novoTamanho)
 {
-	
+
 	int retorno = 0;
 	return retorno;
 }
@@ -322,9 +376,15 @@ int modificarTamanhoEstruturaAuxiliar(int posicao, int novoTamanho)
 */
 int getQuantidadeElementosEstruturaAuxiliar(int posicao)
 {
+
 	
 	int retorno = 0;
 	
+
+
+	int retorno = 0;
+
+
 	return retorno;
 }
 
@@ -337,7 +397,7 @@ int getQuantidadeElementosEstruturaAuxiliar(int posicao)
 */
 No *montarListaEncadeadaComCabecote()
 {
-	
+
 	return NULL;
 }
 
@@ -385,9 +445,4 @@ void inicializar()
 void finalizar()
 {
 }
-
-
-
-
-
 
