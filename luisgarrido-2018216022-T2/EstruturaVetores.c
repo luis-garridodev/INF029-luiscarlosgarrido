@@ -14,11 +14,6 @@ typedef struct Elem
 
 Elemento vetorPrincipal[TAM];
 
-void dobrar(int *x)
-{
-
-	*x = *x * 2;
-}
 /*
 	Objetivo: criar estrutura auxiliar na posição 'posicao'.
 	com tamanho 'tamanho'
@@ -33,13 +28,7 @@ void dobrar(int *x)
 int criarEstruturaAuxiliar(int posicao, int tamanho)
 {
 
-	
 	int retorno = 0;
-	
-
-
-	int retorno = 0;
-
 
 	// a entrada posicao do usuário vai de 1 a 10
 	// internamente é de 0 a 9
@@ -63,16 +52,9 @@ int criarEstruturaAuxiliar(int posicao, int tamanho)
 	else
 	{
 
-		
 		// deu tudo certo, crie
 		vetorPrincipal[posicao - 1].aux = malloc(tamanho * sizeof(int));
 		vetorPrincipal[posicao - 1].tam = tamanho;
-
-
-		// deu tudo certo, crie
-		vetorPrincipal[posicao - 1].aux = malloc(tamanho * sizeof(int));
-		vetorPrincipal[posicao - 1].tam = tamanho;
-
 
 		if (!vetorPrincipal[posicao - 1].aux)
 		{
@@ -80,10 +62,6 @@ int criarEstruturaAuxiliar(int posicao, int tamanho)
 			retorno = SEM_ESPACO_DE_MEMORIA;
 		}
 		else
-
-		retorno = SUCESSO;
-	}
-	
 
 			retorno = SUCESSO;
 	}
@@ -102,12 +80,6 @@ int criarEstruturaAuxiliar(int posicao, int tamanho)
 */
 int inserirNumeroEmEstrutura(int posicao, int valor)
 {
-
-	
-	int retorno = 0;
-	int existeEstruturaAuxiliar = 0;
-	int posicao_invalida = 0;
-
 
 	int retorno = 0;
 	int existeEstruturaAuxiliar = 0;
@@ -158,38 +130,32 @@ int inserirNumeroEmEstrutura(int posicao, int valor)
 */
 int excluirNumeroDoFinaldaEstrutura(int posicao)
 
-{ 
-	
+{
+
 	int retorno;
-	
+
 	//if (posicao < 1 || posicao > 10)
 	if (ehPosicaoValida(posicao) == POSICAO_INVALIDA)
 	{
 		// se posição é um valor válido {entre 1 e 10}
 		retorno = POSICAO_INVALIDA;
 	}
-	else if (vetorPrincipal[posicao - 1].aux == NULL){
-		
+	else if (vetorPrincipal[posicao - 1].aux == NULL)
+	{
+
 		retorno = SEM_ESTRUTURA_AUXILIAR;
-		
 	}
-	else if (vetorPrincipal[posicao-1].qtd<1) {
-		retorno = ESTRUTURA_AUXILIAR_VAZIA;	
+	else if (vetorPrincipal[posicao - 1].qtd < 1)
+	{
+		retorno = ESTRUTURA_AUXILIAR_VAZIA;
 	}
-	else{
-		vetorPrincipal[posicao-1].qtd--;	
-		retorno=SUCESSO;
-		
+	else
+	{
+		vetorPrincipal[posicao - 1].qtd--;
+		retorno = SUCESSO;
 	}
-	//sucesso crie	
-	return (retorno);
-
-{
-	int retorno = SUCESSO;
 	return retorno;
-
 }
-
 
 /*
 	Objetivo: excluir o numero 'valor' da estrutura auxiliar da posição 'posicao'.
@@ -208,41 +174,36 @@ int excluirNumeroEspecificoDeEstrutura(int posicao, int valor)
 {
 
 	int retorno;
-  	if (posicao < 1 || posicao > 10)
+
+	if (ehPosicaoValida(posicao) == POSICAO_INVALIDA)
 	{
 		retorno = POSICAO_INVALIDA;
 	}
-	else if (vetorPrincipal[posicao - 1].aux == NULL){
-		
+	else if (vetorPrincipal[posicao - 1].aux == NULL)
+	{
 		retorno = SEM_ESTRUTURA_AUXILIAR;
-		
 	}
-	else if (vetorPrincipal[posicao-1].qtd<1) {
-		retorno = ESTRUTURA_AUXILIAR_VAZIA;	
+	else if (vetorPrincipal[posicao - 1].qtd < 1)
+	{
+		retorno = ESTRUTURA_AUXILIAR_VAZIA;
 	}
-	for(int i=0;i<=vetorPrincipal[posicao-1].qtd;i++){
+	else
+	{
+		retorno = NUMERO_INEXISTENTE;
+		for (int i = 0; i < vetorPrincipal[posicao - 1].qtd; i++)
 		{
-			if(vetorPrincipal[posicao-1].aux[i]!=valor){
-				retorno=NUMERO_INEXISTENTE;
-			}
-			else{
-				for(i=0;i<=vetorPrincipal[posicao-1].qtd;i++){
-					vetorPrincipal[i-1]=vetorPrincipal[i];
-					
-					
-				}
-				vetorPrincipal[posicao-1].qtd--;
+			if (vetorPrincipal[posicao - 1].aux[i] == valor)
+			{
 				retorno = SUCESSO;
+				for (int j = i; j < vetorPrincipal[posicao - 1].qtd; j++)
+				{
+					vetorPrincipal[posicao - 1].aux[j] = vetorPrincipal[posicao - 1].aux[j + 1];
+				}
+				vetorPrincipal[posicao - 1].qtd--;
+				break;
 			}
-			
-			
-			
 		}
-		
-		
 	}
-
-	int retorno = SUCESSO;
 
 	return retorno;
 }
@@ -255,12 +216,6 @@ int ehPosicaoValida(int posicao)
 	{
 		retorno = POSICAO_INVALIDA;
 	}
-
-	
-	else
-	retorno = SUCESSO;
-	
-
 	else
 		retorno = SUCESSO;
 
@@ -278,19 +233,10 @@ int ehPosicaoValida(int posicao)
 int getDadosEstruturaAuxiliar(int posicao, int vetorAux[])
 {
 
-	
-	int retorno = 0;
-	
-	return retorno;
-}
-
-
-
 	int retorno = 0;
 
 	return retorno;
 }
-
 
 /*
 	Objetivo: retorna os números ordenados da estrutura auxiliar da posição 'posicao (1..10)'.
@@ -304,13 +250,7 @@ int getDadosEstruturaAuxiliar(int posicao, int vetorAux[])
 int getDadosOrdenadosEstruturaAuxiliar(int posicao, int vetorAux[])
 {
 
-	
 	int retorno = 0;
-	
-
-
-	int retorno = 0;
-
 
 	return retorno;
 }
@@ -377,13 +317,7 @@ int modificarTamanhoEstruturaAuxiliar(int posicao, int novoTamanho)
 int getQuantidadeElementosEstruturaAuxiliar(int posicao)
 {
 
-	
 	int retorno = 0;
-	
-
-
-	int retorno = 0;
-
 
 	return retorno;
 }
@@ -397,7 +331,6 @@ int getQuantidadeElementosEstruturaAuxiliar(int posicao)
 */
 No *montarListaEncadeadaComCabecote()
 {
-
 	return NULL;
 }
 
@@ -445,4 +378,3 @@ void inicializar()
 void finalizar()
 {
 }
-
