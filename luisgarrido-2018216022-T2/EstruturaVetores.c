@@ -446,34 +446,51 @@ int getDadosOrdenadosDeTodasEstruturasAuxiliares(int vetorAux[])
 */
 int modificarTamanhoEstruturaAuxiliar(int posicao, int novoTamanho)
 {
-	int soma;
 	int retorno = 0;
-  	if (ehPosicaoValida(posicao) == POSICAO_INVALIDA)
-	{
-		// se posição é um valor válido {entre 1 e 10}
-		retorno = POSICAO_INVALIDA;
-	}
-	else if (vetorPrincipal[posicao - 1].aux == NULL)
-	{
-		
-		retorno = SEM_ESTRUTURA_AUXILIAR;
-	}
-  	else if (vetorPrincipal[posicao - 1].qtd == vetorPrincipal[posicao - 1].tam)
-	{
-		retorno = SEM_ESPACO_DE_MEMORIA;
-	}
-    else if(novoTamanho<0){
-		
-		retorno=NOVO_TAMANHO_INVALIDO;
-	}
+	int tamanho, memoria_insuficeinte;
+	
+	tamanho = vetorPrincipal[posicao-1].tam + novoTamanho;
+	
+    
+	if(ehPosicaoValida(posicao) != SUCESSO)
+	
+	retorno = POSICAO_INVALIDA;
+	
+	
+	
+	else if( vetorPrincipal[posicao-1].aux == NULL )
+	
+	retorno =  SEM_ESTRUTURA_AUXILIAR;
+	
+  	
+	else if( tamanho  < 1)
+	
+	retorno =  NOVO_TAMANHO_INVALIDO;
+	
 	else{
-		soma=vetorPrincipal[posicao-1].tam+novoTamanho;
-       	vetorPrincipal[posicao - 1].aux = malloc(soma * sizeof(int));
-		vetorPrincipal[posicao-1].tam=soma;
-		return SUCESSO;
 		
+		
+		vetorPrincipal[posicao-1].aux = (int*) realloc (vetorPrincipal[posicao-1].aux,  tamanho * sizeof(int));
+		
+		if(vetorPrincipal[posicao-1].aux == NULL){
+			
+			retorno = SEM_ESPACO_DE_MEMORIA;
+			
+			}else{
+        	
+			vetorPrincipal[posicao-1].tam = tamanho;
+			retorno = SUCESSO;
+			
+			if(tamanho < vetorPrincipal[posicao-1].qtd ){
+				vetorPrincipal[posicao-1].qtd = tamanho;
+				retorno = SUCESSO; 
+			}
+			
+		} 
 		
 	}
+	
+	return retorno;
 	
 	return retorno;
 }
@@ -551,13 +568,6 @@ void inicializar()
 void finalizar()
 {
 }
-
-
-
-
-
-
-
 
 
 
